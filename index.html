@@ -25,23 +25,23 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --red:        #cc0e1a;
-            --red-dark:   #9e0b14;
-            --red-light:  #f9e5e7;
+            --red:        #1a4f8a;
+            --red-dark:   #0f3464;
+            --red-light:  #ddeaf8;
             --green:      #22c55e;
             --green-dark: #16a34a;
-            --dark:       #111418;
-            --mid:        #3a3f47;
-            --muted:      #7a828f;
-            --line:       #e8eaed;
-            --bg:         #f5f4f0;
+            --dark:       #0f1c2e;
+            --mid:        #374151;
+            --muted:      #5c6878;
+            --line:       #d4e0ef;
+            --bg:         #eef3fa;
             --white:      #ffffff;
             --font-head:  'Playfair Display', Georgia, serif;
             --font-body:  'DM Sans', system-ui, sans-serif;
             --ease:       cubic-bezier(0.4, 0, 0.2, 1);
             --shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
-            --shadow-md:  0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
-            --shadow-lg:  0 20px 40px rgba(0,0,0,.12);
+            --shadow-md:  0 4px 16px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+            --shadow-lg:  0 20px 40px rgba(0,0,0,.14);
             --r:          14px;
         }
 
@@ -49,6 +49,7 @@
 
         body {
             font-family: var(--font-body);
+            font-size: 16px;
             background: var(--bg);
             color: var(--dark);
             padding-top: 90px;
@@ -132,9 +133,9 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            padding: 10px 20px;
+            padding: 11px 22px;
             font-family: var(--font-body);
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 600;
             border-radius: 40px;
             border: none;
@@ -198,8 +199,8 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 60% 80% at 15% 50%, rgba(204,14,26,.18) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 60% at 85% 30%, rgba(204,14,26,.12) 0%, transparent 70%);
+                radial-gradient(ellipse 60% 80% at 15% 50%, rgba(37,99,235,.22) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 85% 30%, rgba(26,79,138,.18) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -211,9 +212,9 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(204,14,26,.2);
-            border: 1px solid rgba(204,14,26,.4);
-            color: #ff8a8a;
+            background: rgba(37,99,235,.18);
+            border: 1px solid rgba(37,99,235,.40);
+            color: #93c5fd;
             font-size: 11px;
             font-weight: 600;
             letter-spacing: 2px;
@@ -232,7 +233,7 @@
             margin-bottom: 20px;
         }
 
-        .hero h1 span { color: var(--red); }
+        .hero h1 span { color: #60a5fa; }
 
         .hero p {
             font-size: 17px;
@@ -412,9 +413,9 @@
         }
 
         .card-desc {
-            font-size: 13.5px;
+            font-size: 15px;
             color: var(--muted);
-            line-height: 1.65;
+            line-height: 1.7;
             font-weight: 400;
             flex-grow: 1;
         }
@@ -453,7 +454,7 @@
             font-weight: 600;
             letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: var(--red);
+            color: #60a5fa;
             margin-bottom: 16px;
         }
 
@@ -476,9 +477,10 @@
             font-family: var(--font-head);
             font-size: 36px;
             font-weight: 900;
-            color: var(--green);
+            color: #60a5fa;
             margin-bottom: 28px;
             letter-spacing: -1px;
+            display: block;
         }
 
         .footer-actions {
@@ -499,6 +501,91 @@
             font-size: 12px;
             color: rgba(255,255,255,.3);
         }
+
+        .footer-actions .btn-dark {
+            background: rgba(255,255,255,.1);
+            border: 1.5px solid rgba(255,255,255,.25);
+        }
+        @media (hover: hover) {
+            .footer-actions .btn-dark:hover { background: rgba(255,255,255,.2); }
+        }
+
+        /* ============================================================
+           TRUST STRIP
+        ============================================================ */
+        .trust-strip {
+            background: var(--dark);
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+        .trust-strip-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,.82);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .trust-check {
+            width: 22px;
+            height: 22px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* ============================================================
+           CATEGORY BAR
+        ============================================================ */
+        .cat-bar {
+            position: sticky;
+            top: 90px;
+            z-index: 800;
+            background: var(--white);
+            border-bottom: 2px solid var(--line);
+            box-shadow: 0 2px 8px rgba(0,0,0,.06);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .cat-bar::-webkit-scrollbar { display: none; }
+        .cat-bar-inner {
+            display: flex;
+            width: 100%;
+            padding: 0 24px;
+            justify-content: center;
+        }
+        .cat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 24px;
+            height: 54px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--muted);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: color .2s var(--ease), border-color .2s var(--ease);
+        }
+        .cat-pill.active { color: var(--red); border-bottom-color: var(--red); }
+        .cat-pill:active  { color: var(--red); }
+        @media (hover: hover) { .cat-pill:hover { color: var(--red); } }
 
         /* ============================================================
            RESPONSIVE
@@ -531,7 +618,11 @@
             }
 
             .anchor-offset { height: 80px; margin-top: -80px; }
-
+            .cat-bar { top: 70px; }
+            .cat-bar-inner { justify-content: flex-start; min-width: max-content; }
+            .cat-pill { font-size: 14px; padding: 0 18px; height: 48px; }
+            .trust-strip-inner { gap: 16px; padding: 12px 20px; }
+            .trust-item { font-size: 13px; }
             .footer-top { padding: 50px 20px; }
         }
 
@@ -684,6 +775,37 @@
     </div>
 </section>
 
+
+<!-- ============================================================
+     TRUST STRIP
+============================================================ -->
+<div class="trust-strip">
+    <div class="trust-strip-inner">
+        <div class="trust-item">
+            <span class="trust-check">✓</span>
+            Productos originales Essen
+        </div>
+        <div class="trust-item">
+            <span class="trust-check">✓</span>
+            Entrega a domicilio
+        </div>
+        <div class="trust-item">
+            <span class="trust-check">✓</span>
+            Atención personalizada
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     CATEGORY BAR
+============================================================ -->
+<div class="cat-bar">
+    <div class="cat-bar-inner">
+        <a href="#seccion-ollas"      class="cat-pill active">🥘 Ollas &amp; Cacerolas</a>
+        <a href="#seccion-termos"     class="cat-pill">☕ Termos &amp; Mates</a>
+        <a href="#seccion-utensilios" class="cat-pill">🥄 Utensilios</a>
+    </div>
+</div>
 
 <!-- ============================================================
      MAIN CATALOG
@@ -1284,6 +1406,28 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Category pill activa según sección visible
+    const catPillMap = {
+        'seccion-ollas':       document.querySelector('.cat-pill[href="#seccion-ollas"]'),
+        'seccion-termos':      document.querySelector('.cat-pill[href="#seccion-termos"]'),
+        'seccion-utensilios':  document.querySelector('.cat-pill[href="#seccion-utensilios"]'),
+    };
+    const activatePill = (id) => {
+        Object.values(catPillMap).forEach(p => p?.classList.remove('active'));
+        catPillMap[id]?.classList.add('active');
+        // auto-scroll pill into view on mobile
+        const pill = catPillMap[id];
+        if (pill) pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    };
+    const sectionObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const anchor = entry.target.previousElementSibling;
+            if (anchor && catPillMap[anchor.id]) activatePill(anchor.id);
+        });
+    }, { rootMargin: '-95px 0px -52% 0px', threshold: 0 });
+    document.querySelectorAll('.section-wrap').forEach(el => sectionObs.observe(el));
 
 
 </script>
