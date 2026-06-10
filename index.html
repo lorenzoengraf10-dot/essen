@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Catálogo Essen — Venta Directa</title>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RV6V4LBQSZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RV6V4LBQSZ', {
+            allow_google_signals: true,  /* habilita edad y sexo via Google Signals */
+            allow_ad_personalization_signals: true
+        });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -1223,6 +1235,41 @@
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth' });
             }
+        });
+    });
+
+    // Tracking de clicks en botones de WhatsApp
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', function() {
+            let label = 'general';
+
+            const card = this.closest('.card');
+            if (card) {
+                label = card.querySelector('.card-title')?.textContent?.trim() || 'producto';
+            } else if (this.closest('.mobile-nav')) {
+                label = 'nav_inferior_wa';
+            } else if (this.closest('.hero')) {
+                label = 'hero_encargo';
+            } else if (this.closest('footer')) {
+                label = this.textContent.includes('Encargo') ? 'footer_encargo' : 'footer_consulta';
+            } else if (this.closest('header')) {
+                label = this.textContent.includes('Encargar') ? 'header_encargo' : 'header_consulta';
+            }
+
+            gtag('event', 'whatsapp_click', {
+                event_category: 'contacto',
+                event_label: label
+            });
+        });
+    });
+
+    // Tracking de click en número de teléfono
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            gtag('event', 'phone_click', {
+                event_category: 'contacto',
+                event_label: 'footer_telefono'
+            });
         });
     });
 
