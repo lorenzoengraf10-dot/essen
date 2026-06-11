@@ -547,6 +547,31 @@
         /* ============================================================
            TRUST STRIP
         ============================================================ */
+        /* Delivery highlight band */
+        .delivery-band {
+            background: #fff8ee;
+            border-top: 4px solid var(--red);
+            border-bottom: 1px solid #f0e4cc;
+            padding: 26px 24px;
+        }
+        .delivery-band-inner {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .delivery-band-icon { font-size: 54px; flex-shrink: 0; line-height: 1; }
+        .delivery-band-text strong {
+            display: block;
+            font-size: clamp(17px, 4vw, 23px);
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+        .delivery-band-text span { font-size: 14px; color: var(--muted); }
+
         .trust-strip {
             background: var(--dark);
             border-bottom: 1px solid rgba(255,255,255,.07);
@@ -888,6 +913,20 @@
         </div>
     </div>
 </section>
+
+
+<!-- ============================================================
+     DELIVERY BAND
+============================================================ -->
+<div class="delivery-band">
+    <div class="delivery-band-inner">
+        <div class="delivery-band-icon">📦</div>
+        <div class="delivery-band-text">
+            <strong>Tu pedido de cualquier producto llega a la puerta de tu casa</strong>
+            <span>Hacés el encargo y lo recibís cómodamente, sin moverte.</span>
+        </div>
+    </div>
+</div>
 
 
 <!-- ============================================================
