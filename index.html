@@ -407,6 +407,22 @@
             overflow: hidden;
         }
 
+        /* Badge sobre la foto (Combo / Oferta) */
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--green);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            padding: 6px 14px;
+            border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,.25);
+            z-index: 2;
+        }
+
         .card-specs {
             display: flex;
             flex-wrap: wrap;
@@ -850,6 +866,7 @@
 
         <!-- Navegación escritorio -->
         <nav class="nav-group">
+            <a href="#seccion-combos"      class="btn btn-ghost">🏷️ Ofertas</a>
             <a href="#seccion-ollas"       class="btn btn-ghost">🥘 Ollas</a>
             <a href="#seccion-termos"      class="btn btn-ghost">☕ Termos</a>
             <a href="#seccion-utensilios"  class="btn btn-ghost">🥄 Utensilios</a>
@@ -918,7 +935,8 @@
 ============================================================ -->
 <div class="cat-bar">
     <div class="cat-bar-inner">
-        <a href="#seccion-ollas"      class="cat-pill active">🥘 Ollas &amp; Cacerolas</a>
+        <a href="#seccion-combos"     class="cat-pill active">🏷️ Combos &amp; Ofertas</a>
+        <a href="#seccion-ollas"      class="cat-pill">🥘 Ollas &amp; Cacerolas</a>
         <a href="#seccion-termos"     class="cat-pill">☕ Termos &amp; Mates</a>
         <a href="#seccion-utensilios" class="cat-pill">🥄 Utensilios</a>
     </div>
@@ -928,6 +946,63 @@
      MAIN CATALOG
 ============================================================ -->
 <main class="container">
+
+
+    <!-- ==================================================
+         SECCIÓN COMBOS & OFERTAS
+    ================================================== -->
+    <span id="seccion-combos" class="anchor-offset"></span>
+    <div class="section-wrap">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">Ofertas Especiales</div>
+                <h2 class="section-title">Combos &amp; Ofertas</h2>
+            </div>
+            <span class="section-count">2 productos</span>
+        </div>
+
+        <div class="grid">
+
+            <!-- Combo 1: Set Espátula y Batidor -->
+            <div class="card">
+                <div class="card-visual card-photo">
+                    <span class="card-badge">30% OFF</span>
+                    <img src="images/set-espatula-batidor.jpg" alt="Set Espátula y Batidor de Silicona" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-cat">Combos y Ofertas</div>
+                    <h3 class="card-title">Set Espátula y Batidor</h3>
+
+                    <div class="card-specs"><span class="card-spec">30% OFF</span><span class="card-spec">Silicona</span><span class="card-spec">2 piezas</span></div>
+                    <p class="card-desc">Espátula y batidor de silicona en un combo con 30% de descuento. No rayan tus ollas y resisten altas temperaturas. ¡Aprovechá la oferta!</p>
+                    <a href="https://wa.me/5492920511057?text=Hola,%20quiero%20encargar%20el%20Set%20Espátula%20y%20Batidor%20(30%25%20OFF)" class="btn btn-wa-full" target="_blank" rel="noopener">
+                        <svg width="16" height="16" aria-hidden="true"><use href="#ico-wa"></use></svg>
+                        Encargar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Combo 2: Combo Bazar Mix -->
+            <div class="card">
+                <div class="card-visual card-photo">
+                    <span class="card-badge">COMBO</span>
+                    <img src="images/combo-bazar.jpg" alt="Combo Bazar Mix: bowls de acero y rallador" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-cat">Combos y Ofertas</div>
+                    <h3 class="card-title">Combo Bazar Mix</h3>
+
+                    <div class="card-specs"><span class="card-spec">3 bowls c/ tapa</span><span class="card-spec">Rallador 3 granos</span><span class="card-spec">Acero inox</span></div>
+                    <p class="card-desc">Set de 3 bowls de acero inoxidable con tapa (negro) + rallador de mano con 3 granos: grueso, medio y fino. Todo lo que necesitás para tu cocina.</p>
+                    <a href="https://wa.me/5492920511057?text=Hola,%20quiero%20encargar%20el%20Combo%20Bazar%20Mix" class="btn btn-wa-full" target="_blank" rel="noopener">
+                        <svg width="16" height="16" aria-hidden="true"><use href="#ico-wa"></use></svg>
+                        Encargar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 
     <!-- ==================================================
@@ -1412,6 +1487,7 @@
 
     // Category pill activa según sección visible
     const catPillMap = {
+        'seccion-combos':      document.querySelector('.cat-pill[href="#seccion-combos"]'),
         'seccion-ollas':       document.querySelector('.cat-pill[href="#seccion-ollas"]'),
         'seccion-termos':      document.querySelector('.cat-pill[href="#seccion-termos"]'),
         'seccion-utensilios':  document.querySelector('.cat-pill[href="#seccion-utensilios"]'),
@@ -1482,6 +1558,10 @@
      MOBILE BOTTOM NAVIGATION
 ============================================================ -->
 <nav class="mobile-nav" aria-label="Categorías">
+    <a href="#seccion-combos" class="mobile-nav-item">
+        <span class="mobile-nav-icon" aria-hidden="true">🏷️</span>
+        Ofertas
+    </a>
     <a href="#seccion-ollas" class="mobile-nav-item">
         <span class="mobile-nav-icon" aria-hidden="true">🥘</span>
         Ollas
