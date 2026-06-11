@@ -737,7 +737,11 @@
 
 
         /* ── Lightbox ── */
-        .card-photo { cursor: zoom-in; }
+        .card-photo {
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,.08);
+            touch-action: manipulation;
+        }
         .card-photo::after {
             content: '⊕';
             position: absolute; bottom: 8px; right: 10px;
@@ -1380,8 +1384,11 @@
     const lbWa   = document.getElementById('lightbox-wa');
     const lbX    = document.getElementById('lightbox-close');
 
+    let _lbScrollY = 0;
     document.querySelectorAll('.card-photo').forEach(el => {
-        el.addEventListener('click', () => {
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        const openLb = () => {
             const card = el.closest('.card');
             const img  = el.querySelector('img');
             const wa   = card.querySelector('.btn-wa-full');
@@ -1392,12 +1399,20 @@
             lbDesc.textContent = card.querySelector('.card-desc')?.textContent  || '';
             lbWa.href    = wa?.href || '#';
             lb.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            // iOS-safe scroll lock
+            _lbScrollY = window.scrollY;
+            document.body.style.cssText = `overflow:hidden;position:fixed;top:-${_lbScrollY}px;width:100%;`;
             gtag('event', 'product_zoom', { event_category: 'catalogo', event_label: lbTtl.textContent });
-        });
+        };
+        el.addEventListener('click', openLb);
+        el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openLb(); });
     });
 
-    const closeLb = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+    const closeLb = () => {
+        lb.classList.remove('open');
+        document.body.style.cssText = '';
+        window.scrollTo(0, _lbScrollY);
+    };
     lbX.addEventListener('click', closeLb);
     lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
